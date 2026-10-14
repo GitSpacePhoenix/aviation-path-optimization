@@ -1,0 +1,51 @@
+
+
+-- 1. Table to store fligth start and end points
+CREATE TABLE scenarios(
+		scenario_id SERIAL PRIMARY KEY,
+		scenario_name VARCHAR(100) NOT NULL,
+		start_x NUMERIC NOT NULL,
+		start_y NUMERIC NOT NULL,
+		end_x NUMERIC NOT NULL,
+		end_y NUMERIC NOT NULL
+);
+
+-- Table to store storm date linked to a specific scenario
+CREATE TABLE weather_zones(
+	zone_id SERIAL PRIMARY KEY,
+	scenario_id INTEGER REFERENCES scenarios(scenario_id),
+	center_x NUMERIC NOT NULL,
+	center_y NUMERIC NOT NULL,
+	radius NUMERIC NOT NULL
+	
+);
+
+-- 3. Table to store storm data linked to a specific scenario
+DROP TABLE IF EXISTS optimzed_trajectories;
+CREATE TABLE optimized_trajectories(
+		waypoint_id SERIAL PRIMARY KEY,
+		scenario_id INTEGER REFERENCES scenarios(scenario_id),
+		sequence_order INTEGER NOT NULL, -- 0 for start, 1, 2, 3 .. for inermediate,
+		pos_x NUMERIC NOT NULL,
+		pos_y NUMERIC NOT NULL
+		
+);
+
+-- Insert our first test data as 'Test Fligth Alpha':
+INSERT INTO scenarios(scenario_name, start_x, start_y, end_x, end_y) 
+VALUES ('Test Flight Alpha', 0.0, 0.0, 100.0, 100.0);
+
+-- Insert the storm for Test Flight Alpha (Assuming scenario_id = 1)
+INSERT INTO weather_zones (scenario_id, center_x, center_y, radius)
+VALUES (1, 50.0, 50.0, 15.0);
+-- Insert the sto
+
+
+
+ALTER TABLE scenarios
+ADD COLUMN last_optimized_cost NUMERIC,
+ADD COLUMN generations_run INTEGER;
+
+SELECT scenario_id, scenario_name, last_optimized_cost, generations_run 
+FROM scenarios;
+

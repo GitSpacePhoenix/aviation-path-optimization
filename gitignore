@@ -1,0 +1,10 @@
+# Ignore environment variables and credentials
+.env
+
+# Python caches and virtual envs
+__pycache__/
+venv/
+*.pyc
+
+# Ignore temporary data exports
+*.csv
