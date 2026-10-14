@@ -8,7 +8,7 @@ An end-to-end data pipeline and genetic algorithm designed to calculate the most
 3. **Business Intelligence:** A Power BI dashboard connected to the PostgreSQL LAN server visualizes the optimized trajectory and translates evolutionary metrics into business KPIs (e.g., Safety Detour Cost).
 
 ## 📊 Results
-![Optimized Route](assets/dashboard_final.png)
+![Optimized Route](assets/Optimized_Path.png)
 *The model calculated a safety detour cost of +6.39 km to bypass the storm zone safely compared to a theoretical linear flight.*
 
 ## ⚙️ How to Run
