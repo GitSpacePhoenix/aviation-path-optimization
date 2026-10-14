@@ -1,5 +1,0 @@
-DB_USER=postgres
-DB_PASSWORD=512Silver
-DB_HOST=localhost
-DB_PORT=5432
-DB_NAME=Genetic_path_planning
